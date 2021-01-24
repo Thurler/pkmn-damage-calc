@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Damage Calc</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/mdb.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="row my-2 mx-2 text-center">
+		<div class="col-md-12">
+			<button id="statsView2" type="button" class="btn btn-info">
+				Use raw stats
+			</button>
+			<button id="speciesView2" type="button" class="btn btn-info" disabled>
+				Specify DVs and StatExp
+			</button>
+		</div>
+	</div>
+	<div class="row my-4 mx-2 text-center">
+		<div class="col-md-4 offset-md-2">
+			<h4>Attacking Pokemon</h4>
+			<div class="row mt-3 mx-2">
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="lv-atk-tag">Level</span>
+						</div>
+						<input id="lv-atk" type="text" class="form-control" placeholder="00" aria-describedby="lv-atk-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="atk-atk-tag">Atk</span>
+						</div>
+						<input id="atk-atk" type="text" class="form-control" placeholder="000" aria-describedby="atk-atk-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="satk-atk-tag">S.Atk</span>
+						</div>
+						<input id="satk-atk" type="text" class="form-control" placeholder="000" aria-describedby="satk-atk-tag">
+					</div>
+				</div>
+			</div>
+			<div class="row my-1 mx-2">
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="hp-atk-tag">HP</span>
+						</div>
+						<input id="hp-atk" type="text" class="form-control" placeholder="000" aria-describedby="hp-atk-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="def-atk-tag">Def</span>
+						</div>
+						<input id="def-atk" type="text" class="form-control" placeholder="000" aria-describedby="def-atk-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="sdef-atk-tag">S.Def</span>
+						</div>
+						<input id="sdef-atk" type="text" class="form-control" placeholder="000" aria-describedby="sdef-atk-tag">
+					</div>
+				</div>
+			</div>
+			<div class="row my-1 mx-2">
+				<div class="col-md-5 offset-md-1">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="modifier-atk-tag">Modifier</span>
+						</div>
+						<div class="input-group-append">
+							<button id="modifier-atk" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">0</button>
+							<div class="dropdown-menu modifier-atk-drop">
+								<a class="dropdown-item" href="#">0</a>
+								<a class="dropdown-item" href="#">+1</a>
+								<a class="dropdown-item" href="#">+2</a>
+								<a class="dropdown-item" href="#">+3</a>
+								<a class="dropdown-item" href="#">+4</a>
+								<a class="dropdown-item" href="#">+5</a>
+								<a class="dropdown-item" href="#">+6</a>
+								<a class="dropdown-item" href="#">-1</a>
+								<a class="dropdown-item" href="#">-2</a>
+								<a class="dropdown-item" href="#">-3</a>
+								<a class="dropdown-item" href="#">-4</a>
+								<a class="dropdown-item" href="#">-5</a>
+								<a class="dropdown-item" href="#">-6</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="burned-tag">Burned?</span>
+						</div>
+						<div class="input-group-append">
+							<button id="burned" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">No</button>
+							<div class="dropdown-menu burned-drop">
+								<a class="dropdown-item" href="#">No</a>
+								<a class="dropdown-item" href="#">Yes</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h4>Defending Pokemon</h4>
+			<div class="row mt-3 mx-2">
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="hp-def-tag">HP</span>
+						</div>
+						<input id="hp-def" type="text" class="form-control" placeholder="000" aria-describedby="hp-def-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="def-def-tag">Def</span>
+						</div>
+						<input id="def-def" type="text" class="form-control" placeholder="000" aria-describedby="def-def-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="sdef-def-tag">S.Def</span>
+						</div>
+						<input id="sdef-def" type="text" class="form-control" placeholder="000" aria-describedby="sdef-def-tag">
+					</div>
+				</div>
+			</div>
+			<div class="row my-1 mx-2">
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="lv-def-tag">Level</span>
+						</div>
+						<input id="lv-def" type="text" class="form-control" placeholder="00" aria-describedby="lv-def-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="atk-def-tag">Atk</span>
+						</div>
+						<input id="atk-def" type="text" class="form-control" placeholder="000" aria-describedby="atk-def-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="satk-def-tag">S.Atk</span>
+						</div>
+						<input id="satk-def" type="text" class="form-control" placeholder="000" aria-describedby="satk-def-tag">
+					</div>
+				</div>
+			</div>
+			<div class="row my-1 mx-2">
+				<div class="col-md-5 offset-md-1">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="modifier-def-tag">Modifier</span>
+						</div>
+						<div class="input-group-append">
+							<button id="modifier-def" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">0</button>
+							<div class="dropdown-menu modifier-def-drop">
+								<a class="dropdown-item" href="#">0</a>
+								<a class="dropdown-item" href="#">+1</a>
+								<a class="dropdown-item" href="#">+2</a>
+								<a class="dropdown-item" href="#">+3</a>
+								<a class="dropdown-item" href="#">+4</a>
+								<a class="dropdown-item" href="#">+5</a>
+								<a class="dropdown-item" href="#">+6</a>
+								<a class="dropdown-item" href="#">-1</a>
+								<a class="dropdown-item" href="#">-2</a>
+								<a class="dropdown-item" href="#">-3</a>
+								<a class="dropdown-item" href="#">-4</a>
+								<a class="dropdown-item" href="#">-5</a>
+								<a class="dropdown-item" href="#">-6</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="reflect-tag">Reflect/Screen?</span>
+						</div>
+						<div class="input-group-append">
+							<button id="reflect" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">No</button>
+							<div class="dropdown-menu reflect-drop">
+								<a class="dropdown-item" href="#">No</a>
+								<a class="dropdown-item" href="#">Yes</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row my-4 mx-2 text-center">
+		<div class="col-md-8 offset-md-2">
+			<h4>Move Information</h4>
+			<div class="row mt-3 mx-2">
+				<div class="col-md-3 offset-md-3">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="power-tag">Base Power</span>
+						</div>
+						<input id="power" type="text" class="form-control" placeholder="000" aria-describedby="power-tag">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="type-tag">Type Effectiveness</span>
+						</div>
+						<div class="input-group-append">
+							<button id="type" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">1x</button>
+							<div class="dropdown-menu type-drop">
+								<a class="dropdown-item" href="#">1x</a>
+								<a class="dropdown-item" href="#">2x</a>
+								<a class="dropdown-item" href="#">4x</a>
+								<a class="dropdown-item" href="#">0.5x</a>
+								<a class="dropdown-item" href="#">0.25x</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-1 mx-2">
+				<div class="col-md-3 offset-md-3">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="stab-tag">Same Type Bonus?</span>
+						</div>
+						<div class="input-group-append">
+							<button id="stab" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Yes</button>
+							<div class="dropdown-menu stab-drop">
+								<a class="dropdown-item" href="#">Yes</a>
+								<a class="dropdown-item" href="#">No</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="special-tag">Is Special Move?</span>
+						</div>
+						<div class="input-group-append">
+							<button id="special" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Yes</button>
+							<div class="dropdown-menu special-drop">
+								<a class="dropdown-item" href="#">Yes</a>
+								<a class="dropdown-item" href="#">No</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-1 mx-2">
+				<div class="col-md-3 offset-md-3">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="weather-tag">Weather Bonus</span>
+						</div>
+						<div class="input-group-append">
+							<button id="weather" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">1x</button>
+							<div class="dropdown-menu weather-drop">
+								<a class="dropdown-item" href="#">1x</a>
+								<a class="dropdown-item" href="#">1.5x</a>
+								<a class="dropdown-item" href="#">0.5x</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="critical-tag">Critical Hit?</span>
+						</div>
+						<div class="input-group-append">
+							<button id="critical" class="btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">No</button>
+							<div class="dropdown-menu critical-drop">
+								<a class="dropdown-item" href="#">No</a>
+								<a class="dropdown-item" href="#">Yes</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row my-2 mx-2 text-center">
+		<div class="col-md-12">
+			<button id="beginCalc" type="button" class="btn btn-danger">
+				Calculate damage
+			</button>
+		</div>
+	</div>
+	<div class="row my-2 mx-2 text-center">
+		<div id="errors" class="col-md-12 text-danger">
+		</div>
+		<div id="result" class="col-md-12">
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="js/sweetalert2/swal.min.js"></script>
+	<script type="text/javascript" src="js/mdbootstrap/popper.min.js"></script>
+	<script type="text/javascript" src="js/mdbootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/mdbootstrap/mdb.min.js"></script>
+	<script type="text/javascript" src="js/calc.js"></script>
+	<script type="text/javascript" src="js/binds.js"></script>
+</body>
+</html> 
